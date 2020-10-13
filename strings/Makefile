@@ -1,4 +1,4 @@
-CFLAGS = -Wall -g
+CFLAGS = -Wall
 
 SRCS := $(wildcard *.c)
 BINS := $(SRCS:%.c=bin/%)
