@@ -18,9 +18,37 @@ void elimina_testa(lista testa)
     free(vecchia_testa); // libero il valore cancellato
 }
 
-// TODO: compito stampa_lista
+void stampa_lista(lista testa)
+{
+    lista tmp = testa;
+    while (tmp != NULL) {
+        printf("%c ", tmp->value);
+        tmp = tmp->next;
+    }
+    printf("\n");
+}
 
-// TODO: compito inserimento in testa
+void inserimento_testa()
+{ // TODO: compito
+}
+
+void inserimento_posizione(lista testa, char val)
+{
+    item* prev_p;
+    item* p;
+
+    prev_p = testa;
+    // devo raggiungere l'elemento precedente a quello di inserimento
+    while ((prev_p->next != NULL) && (prev_p->value < val)) {
+        prev_p = prev_p->next;
+    }
+    // quando esco dal ciclo saro' in una certa posizione della mia lista
+    p = (item*)malloc(sizeof(item)); //1 alloco della memoria
+    p->value = val; // 2- riempiamo il nuovo elemento copiando nel campo value il valore letto
+
+    p->next = prev_p->next;
+    prev_p->next = p;
+}
 
 int main(void)
 {
@@ -38,13 +66,15 @@ int main(void)
         // che adesso puntera' al nuovo elemento appena allocato
     }
 
-    // INSERISCO IN UNA CERTA POSIZIONE
-    //1 alloco il nuovo elemento
-    aux = (item*)malloc(sizeof(item));
-    aux->value = 25; // 2- riempiamo il nuovo elemento copiando nel campo value il valore letto
-
+    printf("stampa lista:\n");
+    stampa_lista(testa);
+    inserimento_posizione(testa, 'c');
+    printf("stampa lista:\n");
+    stampa_lista(testa);
     /*
     TODO:   COME POSSO STAMPARE TUTTI GLI ELEMENTI DI UNA LISTA?
+    TODO:   come eliminare un elemento dalla lista?
+            come eliminare il PRIMO elemento?
     */
     return 0;
 }
