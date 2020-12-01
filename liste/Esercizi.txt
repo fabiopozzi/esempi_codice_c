@@ -1,0 +1,29 @@
+1 - palindromo
+Una parola o una frase palindroma può essere letta indifferentemente da sinistra a destra
+o da destra a sinistra.
+Scrivere una funzione che controlli se una stringa è palindroma usando una pila.
+
+2 conversione base decimale - base 2-9 usando pila
+Scrivere un programma per convertire un numero da notazione decimale
+ad una notazione espressa in una base (o radice) compresa tra 2 e 9 (a scelta dell'utente).
+
+La conversione si effettua con ripetute divisioni per la base in cui
+si sta convertendo il numero prendendo i resti delle divisioni in ordine inverso.
+IDEA: Utilizzare una pila dove memorizzare i resti.
+Per ottenere i dati nell’ordine corretto, basterà semplicemente estrarre dalla pila
+tutti i valori.
+
+3- C
+Coda FIFO per la playlist di un jukebox
+void play_song(coda_t* coda)
+Simula la riproduzione dell' i-esima canzone stampandone il contenuto sullo standard output.
+Estrae quindi la canzone dalla coda
+
+void add_song(coda_t* coda)
+Simula l'aggiunta della canzone alla coda.
+
+void display_playlist(coda_t* coda)
+Stampa tutte le canzoni appartenenti alla playlist 
+
+bonus: aggiungere canzone alla playlist solo se non e' gia' presente (no duplicati).
+ 
