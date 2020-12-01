@@ -1,22 +1,23 @@
 #include <stdio.h>
 #include <string.h>
 
+#define N 5
 int main()
 {
-    char s[5];
+    char s[N];
 
-    printf("stringa:");
-    scanf("%4s", s);
+    char format[4];
+    sprintf(format, "%%%ds", N - 1);
+    scanf(format, s);
 
-    for(int i = 0; i < 5; i++) {
+    for (int i = 0; i < 5; i++) {
         if (s[i] == '\0') {
             printf("-terminatore-");
             break;
-        }
-        else {
+        } else {
             printf("-%c-\n", s[i]);
         }
     }
+
     return 0;
 }
-
