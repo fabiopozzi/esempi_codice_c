@@ -1,0 +1,16 @@
+1.Scrivere un programma che date due stringhe in input stampi la più lunga.
+La prima se sono di uguale lunghezza.
+
+2.Scrivere un programma che date due stringhe in input stampi la maggiore.
+
+3.Scrivere un programma che chieda in input una stringa e calcoli
+da quanti caratteri è composta
+(senza usare la funzione strlen ma cercando il carattere '\0')
+
+4.Scrivere un programma che data una stringa in input, la converta tutta in maiuscolo.
+
+5.Scrivere un programma che data una stringa in input
+verifichi se essa contiene almeno una ‘A’ tra i primi 10 caratteri.
+
+6. Scrivere un programma che richieda in input una stringa e conti
+quante cifre essa contiene. Esempio “Ciao2004! C6?” deve dare 5.
