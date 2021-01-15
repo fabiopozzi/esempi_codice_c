@@ -1,14 +1,15 @@
-/*
-  Legge interi da un file binario,
-  fino alla fine del file.
-  cc Paolo Liberatore
-*/
 #include <stdio.h>
 #include <stdlib.h>
 
+struct punto {
+    int x;
+    int y;
+    int z;
+};
+
 int main() {
     FILE *fd;
-    int x;
+    struct punto p[3];
     int res;
 
     /* apre il file in lettura */
@@ -20,11 +21,11 @@ int main() {
 
     /* ciclo di lettura */
     while (1) {
-        res = fread(&x, sizeof(int), 1, fd);
-        if (res != 1)
+        res = fread(&p, sizeof(struct punto), 3, fd);
+        if (res != 3)
             break;
 
-        printf("%d\n", x);
+        printf("coord. punto x:%d y:%d z:%d\n", p[0].x, p[0].y, p[0].z);
     }
 
     /* chiude il file */

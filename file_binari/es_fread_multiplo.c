@@ -1,14 +1,12 @@
 /*
-  Legge interi da un file binario,
-  fino alla fine del file.
-  cc Paolo Liberatore
+  Lettura multipla da un file binario,
 */
 #include <stdio.h>
 #include <stdlib.h>
 
 int main() {
     FILE *fd;
-    int x;
+    int x[3];
     int res;
 
     /* apre il file in lettura */
@@ -20,13 +18,15 @@ int main() {
 
     /* ciclo di lettura */
     while (1) {
-        res = fread(&x, sizeof(int), 1, fd);
-        if (res != 1)
+        res = fread(x, sizeof(int), 3, fd);
+        if (res != 3)
             break;
 
-        printf("%d\n", x);
     }
 
+    printf("%d\n", x[0]);
+    printf("%d\n", x[1]);
+    printf("%d\n", x[2]);
     /* chiude il file */
     fclose(fd);
 

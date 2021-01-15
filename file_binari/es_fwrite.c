@@ -12,7 +12,7 @@ int main() {
     int x = 12;
 
     /* apre il file */
-    fd = fopen("test.dat", "w");
+    fd = fopen("test.dat", "wb");
     if (fd == NULL) {
         perror("Errore in apertura del file");
         exit(1);
