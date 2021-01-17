@@ -42,9 +42,9 @@ void mostra_persona(anagr * temp) {
 }
 
 int main() {
-    char * name = "anagra.bin";
-    char * name_filtro = "filtro.bin";
-    FILE * pfile = NULL, * pfiltro = NULL;
+    char *name = "anagra.bin";
+    char *name_filtro = "filtro.bin";
+    FILE *pfile = NULL, *pfiltro = NULL;
 
     anagr persona;
     char cerca[20] = "";
@@ -78,7 +78,7 @@ int main() {
             printf("Quale cognome vuoi cercare? ");
             scanf("%s", cerca);
 
-            while (fread( & persona, sizeof(anagr), 1, pfile) != 0) {
+            while (fread(&persona, sizeof(anagr), 1, pfile) != 0) {
                 /* verifica cognome cercato */
                 if (strcmp(persona.cognome, cerca) == 0) {
                     /* visualizzazione del record desiderato */
