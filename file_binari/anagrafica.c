@@ -21,24 +21,24 @@ int get_persona(anagr * temp) {
     char more;
     printf("Vuoi inserire una nuova persona (Y or N)? ");
     fflush(stdin);
-    scanf("%c", & more);
+    scanf("%c", &more);
 
     if (more == 'N' || more == 'n')
         return 0;
     printf("Cognome        : ");
-    scanf("%s", temp -> cognome);
+    scanf("%s", temp->cognome);
     printf("Nome           : ");
-    scanf("%s", temp -> nome);
+    scanf("%s", temp->nome);
     printf("Codice fiscale : ");
-    scanf("%s", temp -> codfis);
+    scanf("%s", temp->codfis);
     return 1;
 }
 
 /* funzione per la visualizzazione dei dati */
 void mostra_persona(anagr * temp) {
-    printf("Cognome        : %s\n", temp -> cognome);
-    printf("Nome           : %s\n", temp -> nome);
-    printf("Codice fiscale : %s\n", temp -> codfis);
+    printf("Cognome        : %s\n", temp->cognome);
+    printf("Nome           : %s\n", temp->nome);
+    printf("Codice fiscale : %s\n", temp->codfis);
 }
 
 int main() {
@@ -57,9 +57,9 @@ int main() {
     }
 
     /* inserimento dati anagrafici delle persone */
-    while (get_persona( & persona))
+    while (get_persona(&persona))
         /* memorizzazione su file dell'anagrafica inserita */
-        fwrite( & persona, sizeof(persona), 1, pfile);
+        fwrite(&persona, sizeof(persona), 1, pfile);
 
     /* chiusura file destinazione */
     fclose(pfile);
@@ -82,9 +82,9 @@ int main() {
                 /* verifica cognome cercato */
                 if (strcmp(persona.cognome, cerca) == 0) {
                     /* visualizzazione del record desiderato */
-                    mostra_persona( & persona);
+                    mostra_persona(&persona);
                     /* scrittura sul secondo file */
-                    fwrite( & persona, sizeof(anagr), 1, pfiltro);
+                    fwrite(&persona, sizeof(anagr), 1, pfiltro);
                 }
             }
             fclose(pfiltro);
