@@ -1,6 +1,12 @@
  /********************************************************
-  * Memorizzazione di informazioni anagrafiche a blocchi
-  * e ricerca
+  * Scrivere un programma che gestisca una anagrafica utenti.
+  * Per ogni utente il programma deve richiedere all'utente
+  * il cognome, il nome, il codice fiscale e salvare
+  * le informazioni in un file binario anagrafica.bin.
+  * Il cognome e il nome hanno una lunghezza massima
+  * di 30 caratteri e possono contenere spazi.
+  * Il codice fiscale ha lunghezza massima di 16 caratteri.
+  *
   * cc Daniele Scarpazza - www.scarpaz.com
   */
 
@@ -42,7 +48,7 @@ void mostra_persona(anagr * temp) {
 }
 
 int main() {
-    char *name = "anagra.bin";
+    char *name = "anagrafica.bin";
     char *name_filtro = "filtro.bin";
     FILE *pfile = NULL, *pfiltro = NULL;
 
