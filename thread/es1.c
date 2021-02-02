@@ -7,7 +7,7 @@ void stampaA()
 
 	while(i < 100)
 	{
-		printf("A");
+		printf("A%d", i);
 		i++;
 	}
 }
@@ -21,7 +21,7 @@ int main()
 
 	while(j < 100)
 	{
-		printf("B");
+		printf("B%d", j);
 		j++;
 	}
 	return 0;

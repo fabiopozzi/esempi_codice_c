@@ -8,7 +8,7 @@ void stampaA()
 
 	while(i < 100)
 	{
-		printf("A");
+		printf("A%d\n", i);
 		i++;
 	}
 }
@@ -19,7 +19,7 @@ void stampaB()
 
 	while(i < 100)
 	{
-		printf("B");
+		printf("B%d\n",i);
 		i++;
 	}
 }
@@ -35,4 +35,3 @@ int main()
 	pthread_join(tB, NULL); // aspetto che stampaB termini
 	return 0;
 }
-/* appunti: ore 17.30 - 19.30 riunione simone? */

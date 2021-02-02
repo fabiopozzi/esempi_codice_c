@@ -6,7 +6,7 @@ void stampaA()
 {
 	int i = 0;
 
-	while(i < 100)
+	while(i < 10000000)
 	{
 		printf("A");
 		i++;
@@ -17,7 +17,7 @@ void stampaB()
 {
 	int i = 0;
 
-	while(i < 100)
+	while(i < 10000000)
 	{
 		printf("B");
 		i++;
@@ -37,7 +37,7 @@ int main()
 	pthread_join(tB, NULL); // aspetto che stampaB termini
 	time (&end);
 	double deltaT = difftime(end, start);
-	printf("Tempo impiegato e' di %.2lf s.", deltaT);
+	printf("Tempo impiegato e' di %lf s.", deltaT);
 
 	return 0;
 }
