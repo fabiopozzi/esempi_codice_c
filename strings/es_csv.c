@@ -1,9 +1,18 @@
 /*
 Data una stringa contenente nome ed eta' separate da ',' stampare i dati separatamente
 Esempio
-Stringa: "Rossi,27"
+Stringa: "Rossi,46"
+
+nome
+Rossi
+012345678
+
+eta
+46
+012345678
+
 Nome: Rossi
-Eta': 27
+Eta': 46
 */
 #include<stdio.h>
 #include<string.h>
@@ -14,9 +23,18 @@ int main()
 
     char nome[100];
     char eta[100];
+    int i;
+    int j;
+    int l;
 
     int pos = strcspn(stringa, ",");
-    int i;
+
+    for(i = 0; i < strlen(stringa); i++) {
+        if (stringa[i] == ',') {
+            pos = i;
+            break;
+        }
+    }
 
     if (stringa[pos] == '\0') {
         printf("errore, stringa senza virgola");
@@ -26,9 +44,16 @@ int main()
             nome[i] = stringa[i];
         }
         nome[i] = '\0';
+        l = strlen(stringa) - pos;
 
+        for(i = 0; i < l; i++){
+            j = i + pos + 1;
+            eta[i] = stringa[j];
+        }
+        eta[i] = '\0';
         printf("posizione della virgola %d\n", pos);
         printf("%s\n", nome);
+        printf("%s\n", eta);
     }
     return 0;
 }
