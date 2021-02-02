@@ -48,7 +48,7 @@ void stampaProprietaFile(struct stat stats)
         printf("esecuzione");
 
     // Dimensione file
-    printf("\nFile size: %d", stats.st_size);
+    printf("\nDimensione file: %ld", stats.st_size);
 
     // Data di creazione (in secondi dal 1 gennaio 1900)
     // Stampa convertendo in formato data "normale"
@@ -57,12 +57,12 @@ void stampaProprietaFile(struct stat stats)
     // tm_year = anno (a partire dal 1900)
     // tm_hour, tm_min, tm_sec = ora, minuti, secondi
     datetime = gmtime(&stats.st_ctime);
-    printf("\nCreated on: %d-%d-%d %d:%d:%d", datetime->tm_mday, datetime->tm_mon, datetime->tm_year + 1900,
+    printf("\nCreated on: %d-%d-%d %d:%d:%d", datetime->tm_mday, datetime->tm_mon + 1, datetime->tm_year + 1900,
                                               datetime->tm_hour, datetime->tm_min, datetime->tm_sec);
 
     // Data e ora di ultima modifica
     datetime = gmtime(&stats.st_mtime);
-    printf("\nModificata il: %d-%d-%d %d:%d:%d", datetime->tm_mday, datetime->tm_mon, datetime->tm_year + 1900,
+    printf("\nModificata il: %d-%d-%d %d:%d:%d", datetime->tm_mday, datetime->tm_mon + 1, datetime->tm_year + 1900,
                                               datetime->tm_hour, datetime->tm_min, datetime->tm_sec);
 
 }
