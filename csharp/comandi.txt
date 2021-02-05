@@ -1,0 +1,2 @@
+$ mcs -out:t1.exe t1.cs
+$ mono t1.exe
