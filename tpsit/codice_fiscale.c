@@ -9,12 +9,11 @@ char tab_controllo[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 int main(int argc, char **argv)
 {
-	int i;
-	int indice;
+	int i, indice;
+	int somma = 0;
 	char cod[17];
 	char ricerca[2] = {0};
 	char *c;
-	int somma = 0;
 
 	/* printf("inserisci codice fiscale:"); */
 	/* scanf("%16s", cod); */
@@ -22,12 +21,12 @@ int main(int argc, char **argv)
 		printf("manca codice fiscale");
 		return -1;
 	}
-	strcpy(cod,argv[1]);
+	strcpy(cod, argv[1]);
 
 	int l = strlen(cod) - 1; // voglio saltare il carattere di controllo
 	for(i = 0; i < l; i++) {
-		ricerca[0] = cod[i]; // compongo la stringa da cercare
 		// possibilita' 1: uso strcspn
+		/* ricerca[0] = cod[i]; // compongo la stringa da cercare */
 		/* indice = strcspn(sequenza, ricerca); */
 
 		// possibilita' 2: ottengo puntatore all'elemento nella sequenza
