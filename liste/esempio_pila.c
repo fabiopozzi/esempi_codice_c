@@ -17,20 +17,16 @@ void push(int v, lista_t* p)
     // nella malloc la sizeof() si deve applicare ad un TIPO che non sia un puntatore
     list_item_t* aux = malloc(sizeof(list_item_t));
     if (aux == NULL) {
+		// MALLOC non ha avuto successo
         printf("non ho potuto inserire l'elemento %d\n", v);
         return;
-    } // MALLOC non ha avuto successo
+    }
     aux->val = v;
     aux->next = *p;
     // aggiorno la testa della pila
     *p = aux;
 }
-/*
-   aux         p                      pila(0x3535)
-  ------       0x3535                 0x2020
-  |   |x|
-  -------
-*/
+
 bool is_empty(lista_t pila)
 {
     if (pila == NULL)
