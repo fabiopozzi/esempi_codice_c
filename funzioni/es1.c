@@ -1,12 +1,13 @@
 #include<stdio.h>
 
-int somma(int val1, int val2, int val3)
+void somma(int val1, int val2, int *val3)
 {
-	int risultato = val1 + val2 + val3;
-
-	printf("%d\n", val1);
-	val1 = 0;
-	return risultato;
+	// val1 int
+	// val2 int
+	// val3 FRECCIA
+	// val1 + val2 ed il risultato lo mettiamo nella variabile
+	// PUNTATA da val3
+	*val3 = val1 + val2;
 }
 
 void stampa(int x)
@@ -24,20 +25,23 @@ void stampa(int x)
 
 int main()
 {
+	int r = 0;
 	int i;
 	int j;
-	j = somma(10, 20, 30);
+	somma(10, 20, &r);
+	printf("r vale %d\n", r);
 
 	i = 100;
-	j = somma(i, 20, 30);
+	somma(i, 20, &r);
+	printf("r vale %d\n", r);
 
 	i = 1000;
-	j = somma(i, 20, 30);
+	somma(i, 20, &r);
+	printf("r vale %d\n", r);
 
-	j = somma(100000, 20, 30);
-	stampa(7);
-	stampa(9);
-	stampa(3);
-	printf("AAAAA\n");
+	somma(100000, 20, &r);
+	/* stampa(7); */
+	/* stampa(9); */
+	/* stampa(3); */
 
 }
