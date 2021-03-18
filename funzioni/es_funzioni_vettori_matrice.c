@@ -12,13 +12,6 @@ void scrivi(int v[], int n);
 
 int main()
 {
-/*
-** [0][55][88][]     2
-** [42][][][]        1
-** [1][2][3][4]      4
-** int lunghezze[R]
- */
-
 	//int un_vettore_bellissimo[N] = {0};
 	int lunghezze[R];
 	int mat[R][C];
