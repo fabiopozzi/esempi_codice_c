@@ -2,27 +2,30 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define N 10
+
 int main()
 {
     FILE* fp;
     char nome_file[] = "prova.txt";
-    char stringa[10];
+    char stringa[N];
     int i = 42;
     float n;
 
     fp = fopen(nome_file, "r");
     if (fp != NULL) {
-        //fgets(stringa, 79, fp);
-        //stringa[strcspn(stringa, "\n")] = '\0';
+        fgets(stringa, N, fp);
+        stringa[strcspn(stringa, "\n")] = '\0';
         // fscanf(fp, "%s", stringa); // ci fermiamo al primo spazio
         // fscanf(fp, "%[^\n]", stringa); // leggiamo tutta la riga (buffer overflow)
+
         int i = 0;
-        char c;
+        int c;
         // leggo una riga (ma se il file finisce sono problemoni)
         while ((c = fgetc(fp)) != '\n') {
             stringa[i] = c;
             i++;
-            if (i == 9)
+            if (i == (N-1))
                 break;
         }
         i = 0;
@@ -32,12 +35,12 @@ int main()
             if (c != '\n' && c != EOF) {
                 stringa[i] = c;
                 i++;
-                if (i == 9)
+                if (i == N-1)
                     break;
             }
         } while (c != '\n' && c != EOF);
 
-        stringa[9] = '\0';
+        stringa[N-1] = '\0';
         printf("stringa vale -%s-\n", stringa);
         fclose(fp);
     }
