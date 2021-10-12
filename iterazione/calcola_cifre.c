@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+/* Il programma calcola il numero di cifre decimali
+ * che compongono un numero inserito dall'utente */
 int main()
 {
 	int n;
@@ -8,7 +10,6 @@ int main()
 	printf("Inserisci un numero ");
 	scanf("%d", &n);
 
-	/* calcola il numero di cifre decimali che il numero contiene */
 	while(n > 0) {
 		i++;
 		n = n / 10;

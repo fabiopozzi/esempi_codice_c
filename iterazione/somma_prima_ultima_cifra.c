@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+/* Il programma calcola la somma della prima e dell'ultima cifra
+ * di un numero inserito dall'utente */
 int main()
 {
 	int n;
@@ -9,7 +11,6 @@ int main()
 	scanf("%d", &n);
 
 	int prima_cifra = n % 10;
-	/* calcola il numero di cifre decimali che il numero contiene */
 	while(n > 10) {
 		i++;
 		n = n / 10;
