@@ -25,11 +25,9 @@ int main()
        if(strchr(vocali, stringa[i]) != NULL) // e' una vocale
        {
            risultato[j] = stringa[i];
-           j++;
-           risultato[j] = 'f';
-           j++;
-           risultato[j] = stringa[i];
-           j++;
+           risultato[j+1] = 'f';
+           risultato[j+2] = stringa[i];
+           j=j+3;
            //printf("%c%c%c", stringa[i], 'f', stringa[i]);
        } else {
            risultato[j] = stringa[i];
