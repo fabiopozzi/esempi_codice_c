@@ -7,7 +7,6 @@ int main()
     char s1[] = "ziao";
     char s2[] = "miao";
 
-#if 0
     int n = strcmp(s1, s2);
     //strcmp() -> 0 se sono uguali, < 0 se s1 viene prima di s2, > 0 se s1 viene dopo s2
     if (n == 0) { // sono uguali??
@@ -29,8 +28,8 @@ int main()
         printf("falso\n");
     }
     /*  Questa lettera è minuscola??      ->        if(islower(c))  */
-    char c = getchar();
-    if (islower(c)) {
+    char d = getchar();
+    if (islower(d)) {
         printf("ho una lettera minuscola\n");
     } else {
         // qui non so se è una lettera oppure no
@@ -38,22 +37,21 @@ int main()
     }
 
     // Questo carattere è una lettera??    ->        if(isalpha(c))
-    if (isalpha(c)) {
+    if (isalpha(d)) {
         printf("lettera\n");
     } else {
         printf("non e' una lettera\n");
     }
 
-#endif
-    char c = getchar();
-    if (isalpha(c)) { // c è una lettera?
-        if (islower(c)) { // c è minuscola?
+    char e = getchar();
+    if (isalpha(e)) { // c è una lettera?
+        if (islower(e)) { // c è minuscola?
             printf("lettera minuscola\n");
-            char n = toupper(c); // converto la lettera in maiuscolo
+            char n = toupper(e); // converto la lettera in maiuscolo
             printf("nuova lettera %c\n", n);
         } else { // no non è minuscola, è una lettera maiuscola
             printf("lettera maiuscola\n");
-            char n = tolower(c); // converto la lettera in minuscolo
+            char n = tolower(e); // converto la lettera in minuscolo
             printf("nuova lettera %c\n", n);
         }
     } else {

@@ -32,5 +32,4 @@ int main()
     // strcspn se non trova la stringa cercata mi restituisce la posizione
     // del terminatore di stringa, e questo gestisce tutti i casi possibili
     printf("Ti chiami -%s-\n", nome);
-    // N.B. c'e' qualcosa da sistemare?
 }
