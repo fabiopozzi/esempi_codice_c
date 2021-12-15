@@ -23,9 +23,14 @@ int main()
             c[i] = p[i];
         }
     }
+    printf("testo in chiaro:\n");
     printf("%s", p);
+    printf("-----------------\n");
+    printf("testo cifrato:\n");
     printf("%s", c);
     printf("-----------------\n");
+
+    printf("testo decifrato:\n");
 
     for(i = 0; c[i] != '\0'; i++) {
         if (isalpha(c[i])) {
