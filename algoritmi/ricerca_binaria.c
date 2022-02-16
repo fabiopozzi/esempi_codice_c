@@ -5,34 +5,41 @@
 int main()
 {
 	int v[N] = { 0, 1, 6, 9, 15, 4, 8, 42, 1, 10};
-	int chiave, indice_el;
-	int i;
+	int chiave, trovato;
+    int pos;
+	int i = 1;
 
-	int inizio, fine, centro;
+	int primo, ultimo, medio;
 
 	printf("inserisci l'elemento da cercare: ");
 	scanf("%d", &chiave);
 
-	inizio = 0;
-	fine = N - 1;
-	indice_el = -1; // inizializzo con un valore non valido
+	primo = 0;
+	ultimo = N - 1;
+    trovato = 0;
+	pos = -1; // inizializzo con un valore non valido
 
-	while(indice_el == -1 && inizio <= fine) {
-		centro = (inizio + fine) / 2;
+	while(trovato == 0 && primo <= ultimo) {
+        printf("iterazione %d: ", i);
+        printf("primo vale %d, ultimo vale %d\n", primo, ultimo);
 
-		if( v[centro] == chiave ) {
-			indice_el = centro; // trovata
+		medio = (primo + ultimo) / 2;
+
+		if( v[medio] == chiave ) {
+            trovato = 1;
+			pos = medio; // trovata
 		} else {
-			if (chiave > v[centro]) {
-				inizio = centro + 1; // prosegui con parte destra
+			if (chiave > v[medio]) {
+				primo = medio + 1; // prosegui con parte destra
 			} else {
-				fine = centro - 1; // continua con parte sx
+				ultimo = medio - 1; // continua con parte sx
 			}
 		}
+        i++;
 	}
 
-	if (indice_el != -1) {
-		printf("ho trovato il valore %d in posizione %d\n", chiave, indice_el);
+	if (trovato) {
+		printf("ho trovato il valore %d in posizione %d\n", chiave, pos);
 	} else {
 		printf("elemento %d non trovato\n", chiave);
 	}
