@@ -19,8 +19,11 @@ int main()
         nuovo = rand() % MAX;
 
         pos = 0;
-        while((numeri[pos] < nuovo) && (numeri[pos] != 0))
+        // se trovo uno zero
+        // se trovo un valore maggiore del valore da inserire
+        while((numeri[pos] < nuovo) && (numeri[pos] != 0)) {
             pos++;
+        }
 
         // sposto avanti tutti i valori di una posizione
         // per poter inserire il nuovo elemento

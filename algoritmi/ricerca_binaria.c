@@ -4,7 +4,7 @@
 
 int main()
 {
-	int v[N] = { 0, 1, 6, 9, 15, 4, 8, 42, 1, 10};
+	int v[N] = { 0, 1, 6, 9, 15, 24, 28, 42, 51, 100};
 	int chiave, trovato;
     int pos;
 	int i = 1;
@@ -19,13 +19,13 @@ int main()
     trovato = 0;
 	pos = -1; // inizializzo con un valore non valido
 
-	while(trovato == 0 && primo <= ultimo) {
-        printf("iterazione %d: ", i);
-        printf("primo vale %d, ultimo vale %d\n", primo, ultimo);
+	printf("iterazione %d: ", i);
+	printf("primo vale %d, ultimo vale %d\n", primo, ultimo);
+	while (trovato == 0 && primo <= ultimo) {
 
 		medio = (primo + ultimo) / 2;
 
-		if( v[medio] == chiave ) {
+		if (v[medio] == chiave) {
             trovato = 1;
 			pos = medio; // trovata
 		} else {
@@ -35,10 +35,12 @@ int main()
 				ultimo = medio - 1; // continua con parte sx
 			}
 		}
+        printf("iterazione %d: ", i);
+        printf("primo vale %d, ultimo vale %d\n", primo, ultimo);
         i++;
 	}
 
-	if (trovato) {
+	if (trovato != 0) {
 		printf("ho trovato il valore %d in posizione %d\n", chiave, pos);
 	} else {
 		printf("elemento %d non trovato\n", chiave);
