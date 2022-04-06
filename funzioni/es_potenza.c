@@ -5,6 +5,32 @@
 */
 #include<stdio.h>
 
+int potenza(int a, int b);
+void stampa_dieci_volte_ciao(void);
+
+int main()
+{
+	int c, d;
+	int risultato;
+
+	do {
+		printf("inserire base ed esponente");
+		scanf("%d %d", &c, &d);
+	} while(d < 0);
+
+	risultato = potenza(c, d);
+	printf("risultato: %d\n", risultato);
+	stampa_dieci_volte_ciao();
+	return 0;
+}
+
+void stampa_dieci_volte_ciao(void)
+{
+	int i;
+	for(i = 0; i < 10; i++)
+		printf("CIAO\n");
+}
+
 int potenza(int a, int b)
 {
 	int i;
@@ -13,19 +39,4 @@ int potenza(int a, int b)
 		risultato = risultato * a;
 	}
 	return risultato;
-}
-
-int main()
-{
-	int a, b;
-	int risultato;
-
-	do {
-		printf("inserire base ed esponente");
-		scanf("%d %d", &a, &b);
-	} while(b < 0);
-
-	risultato = potenza(a, b);
-	printf("risultato: %d\n", risultato);
-	return 0;
 }

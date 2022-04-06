@@ -36,12 +36,26 @@ int main()
 	printf("r vale %d\n", r);
 
 	i = 1000;
-	somma(i, 20, &r);
+	somma(i, r, &r);
 	printf("r vale %d\n", r);
 
-	somma(100000, 20, &r);
 	/* stampa(7); */
 	/* stampa(9); */
 	/* stampa(3); */
+	j = 0;
+	if(divisione(i, j, &r) != 0) {
+		printf("ERROREEEE");
+	} else {
+		printf("il risultato vale %d", r);
+	}
+}
 
+int divisione(int i, int j, int *ris)
+{
+	if (j != 0) {
+		*ris = i / j;
+		return 0;
+	} else {
+		return -1;
+	}
 }
