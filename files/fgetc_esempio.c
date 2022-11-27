@@ -17,12 +17,14 @@ char *leggiFile(char *nome_file)
     }
 
     // assumiamo che il file sia piu' piccolo di 1kB
-    testo = malloc(1000*sizeof(char));
+    testo = (char *)malloc(1000*sizeof(char));
 
     while ((c = fgetc(f)) != EOF)
     {
         testo[i] = (char) c;
         i++;
+        if (i == 1000)
+            break;
     }
 
     // in fondo metto il terminatore di stringa

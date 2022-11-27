@@ -10,10 +10,8 @@ int main()
     fp = fopen(nome_file, "w");
 
     if (fp != NULL) {
-        fprintf(fp, "SONO UNA CAROTA %d\n", i);
+        //fprintf(fp, "SONO UNA CAROTA %d\n", i);
         fclose(fp);
-
-		fp = fopen("esempio.txt", "r");
     }
     return EXIT_SUCCESS;
 }
