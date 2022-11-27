@@ -6,23 +6,60 @@ struct list_element {
     struct list_element* next;
 };
 
-typedef struct list_element* lista;
+typedef struct list_element* lista_t;
 
-char elimina_testa(lista* testa)
+
+
+// lo useremo per rendere piu' leggibile le operazioni successive
+
+char elimina_testa(lista_t* testa)
 {
+    // perche' passo la lista_t per riferimento?
     if (testa == NULL)
-        return 0; // non posso eliminare da una lista vuota
+        return 0; // puntatore a lista non valido
+    if (*testa == NULL)
+        return 0; // lista vuota
 
-    //1 copio il valore della testa in un'altra variabile
-    lista vecchia_testa = *testa;
+    // 1 copio il valore della testa in un'altra variabile
+    lista_t vecchia_testa = *testa;
     char retval = vecchia_testa->value;
-    *testa = vecchia_testa->next; // aggiorno il valore della testa della lista
-    free(vecchia_testa); // libero il valore cancellato
-    return retval;
+    *testa = vecchia_testa->next; // 2 aggiorno il valore della testa della lista_t
+    free(vecchia_testa); // 3 libero il valore cancellato
+    return retval; // 4 restituisco il valore estratto
 }
 
-char elimina_coda(lista testa, lista* coda)
+void stampa_lista(lista_t l)
 {
+    if (l == NULL) {
+        printf("lista_t vuota");
+        return;
+    }
+    while (l != NULL) {
+        printf("%c ", l->value);
+        l = l->next;
+    }
+    printf("\n");
+}
+
+lista_t inserisci_testa(lista_t testa, char c)
+{
+    struct list_element* tmp = (struct list_element *)malloc(sizeof(struct list_element));
+    if (tmp == NULL)
+        return NULL; // ERRORE MALLOC
+    tmp->value = c;
+    tmp->next = testa; // 3 - il nuovo elemento punta alla precedente testa
+    return tmp; // 4- restituisco la nuova testa della lista
+}
+
+char elimina_coda(lista_t testa, lista_t* coda)
+{
+    if (testa == NULL)
+        return 0; // puntatore a testa non valido
+
+    // se coda == NULL questo if non esplode solo perche' viene valutato in ordine
+    if ((coda == NULL) || (*coda == NULL))
+        return 0; // puntatore a coda non valido
+
     // controllo su testa e coda
     struct list_element* tmp = testa;
     char retval = (*coda)->value;
@@ -38,69 +75,73 @@ char elimina_coda(lista testa, lista* coda)
     return retval;
 }
 
-void stampa_lista(lista testa)
+void inserisci_posizione(lista_t l, int pos, char valore)
 {
-    lista tmp = testa;
+    // manca validazione di pos
 
+    // posizione == 0 e' prima posizione
+    for(int i = 0; (i < pos)&&(l != NULL); i++){
+        l = l->next;
+    }
+    struct list_element* tmp = malloc(sizeof(struct list_element));
+    if (tmp == NULL)
+        return; // ERRORE MALLOC
+    tmp->value = valore;
+
+    tmp->next = l->next; // il successivo dell'elemento corrente diventa il successivo
+                        // del nuovo elemento
+    l->next = tmp; // l'elemento corrente punta al nuovo
+}
+
+void inserisci_coda(lista_t l, char valore)
+{
+    // alloca la memoria
+    struct list_element* tmp = (struct list_element *)malloc(sizeof(struct list_element));
     if (tmp == NULL) {
-        printf("lista vuota");
-        return;
+        printf("FAIL MALLOC");
+        exit(EXIT_FAILURE);
     }
-    while (tmp != NULL) {
-        printf("%c ", tmp->value);
-        tmp = tmp->next;
+
+    // riempi il nuovo elemento
+    tmp->value = valore;
+    tmp->next = NULL; // ultimo elemento non ha next
+
+    // vai fino all'ultimo elemento con un valore
+    while (l->next != NULL){
+        l = l->next;
     }
-    printf("\n");
-}
-
-void inserisci_testa(lista* testa, char c)
-{
-    // perche' passo la lista per riferimento?
-    struct list_element* aux = malloc(sizeof(struct list_element));
-    if (aux == NULL)
-        return; // ERRORE MALLOC
-    aux->value = c;
-    aux->next = *testa; //3 - il nuovo elemento punta alla precedente testa
-    *testa = aux; // 4- aggiorno la testa della lista
-}
-
-void inserisci_coda(lista* coda, char c)
-{
-    struct list_element* aux = malloc(sizeof(struct list_element));
-    if (aux == NULL)
-        return; // ERRORE MALLOC
-    aux->value = c;
-    aux->next = NULL;
-
-    // Domanda: perchè devo fare questo?
-    if (*coda == NULL) {
-        *coda = aux;
-    } else {
-        (*coda)->next = aux;
-        *coda = aux; // aggiorno la coda della lista
-    }
+    // aggiorno la coda, quindi il vecchio "ultimo elemento"
+    // va a puntare al nuovo "ultimo elemento"
+    l->next = tmp;
 }
 
 int main()
 {
-    lista l = NULL;
+    lista_t l = NULL;
 
-    inserisci_testa(&l, 'a');
-    inserisci_testa(&l, 'b');
-    inserisci_testa(&l, 'c');
+    l = inserisci_testa(l, 'a');
+    l = inserisci_testa(l, 'b');
+    l = inserisci_testa(l, 'c');
+
     stampa_lista(l);
-    elimina_testa(&l);
+    char c = elimina_testa(&l);
+    printf("la testa della lista vale %c\n", c);
+
+    inserisci_coda(l, 'z');
+    inserisci_coda(l, 'z');
+    inserisci_coda(l, 'a');
     stampa_lista(l);
 
-    lista l2 = NULL;
-    lista t2 = NULL;
-    inserisci_coda(&l2, 'a');
+#if 0
+    lista_t l2 = NULL;
+    lista_t t2 = NULL;
+
     t2 = l2;
     inserisci_coda(&l2, 'b');
     inserisci_coda(&l2, 'c');
     stampa_lista(t2);
     elimina_coda(t2, &l2);
     stampa_lista(t2);
-
+#endif
     return 0;
 }
