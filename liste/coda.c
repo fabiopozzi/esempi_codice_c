@@ -9,7 +9,7 @@ typedef struct list_element {
 
 typedef list_item_t* lista_t;
 
-typedef struct coda {
+typedef struct coda_t {
     lista_t inizio; // puntatore alla cima della coda
     lista_t fine; // puntatore ultimo elemento coda
 } coda_t;
@@ -21,7 +21,7 @@ bool is_empty(coda_t coda)
     return false;
 }
 
-void enqueue(int v, coda_t* coda)
+void accoda(int v, coda_t* coda)
 {
     list_item_t* aux = malloc(sizeof(list_item_t));
     if (aux == NULL) {
@@ -30,6 +30,7 @@ void enqueue(int v, coda_t* coda)
     }
 
     aux->val = v;
+    aux->next = NULL;
     // inserimento in coda
     // se e' il primo elemento allora mi comporto diversamente
     if (is_empty(*coda)) {
@@ -40,12 +41,12 @@ void enqueue(int v, coda_t* coda)
         list_item_t* tmp = coda->fine;
         // l'ultimo elemento deve puntare al nuovo elemento
         tmp->next = aux;
-        // aggiorno la coda della pila
+        // aggiorno la coda
         coda->fine = aux;
     }
 }
 
-int dequeue(coda_t* coda)
+int scoda(coda_t* coda)
 {
     // se la lista e' vuota, non posso estrarre
     if (is_empty(*coda)) {
@@ -71,17 +72,17 @@ int main()
     /* push: aggiungere un elemento alla pila
        pop: estrarre un elemento dalla pila
        */
-    enqueue(10, &coda);
-    enqueue(20, &coda);
-    enqueue(30, &coda);
+    accoda(10, &coda);
+    accoda(20, &coda);
+    accoda(30, &coda);
 
-    val = dequeue(&coda);
+    val = scoda(&coda);
     printf("valore estratto %d\n", val);
-    val = dequeue(&coda);
+    val = scoda(&coda);
     printf("valore estratto %d\n", val);
-    val = dequeue(&coda);
+    val = scoda(&coda);
     printf("valore estratto %d\n", val);
-    val = dequeue(&coda);
+    val = scoda(&coda);
     printf("valore estratto %d\n", val);
 
     return 0;
