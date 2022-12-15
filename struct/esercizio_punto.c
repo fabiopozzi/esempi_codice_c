@@ -14,7 +14,15 @@ struct punto {
 	int x;
 	int y;
 };
-int allinea_ascisse(struct punto p1, struct punto p2);
+
+int allinea_ascisse(struct punto p1, struct punto p2)
+{
+	if (p1.x == p2.x) {
+		return 1;
+	}
+	return 0;
+}
+
 struct punto trasla_ascisse(int delta, struct punto p)
 {
 	p.x = p.x + delta;
@@ -41,7 +49,10 @@ int main() {
 	if (allinea_ascisse(punto1, punto2) != 0)
 		printf("SONO ALLINEATI\n");
 
-	ascissa_primo_quadrante(punto1, &var);
+	if (ascissa_primo_quadrante(punto1, &var) != 0) {
+		printf("errore");
+		return -1;
+	}
 	printf("var %d\n", var);
 
 	printf("p1.x %d p1.y %d\n", punto1.x, punto1.y);
@@ -51,10 +62,3 @@ int main() {
 	return 0;
 }
 
-int allinea_ascisse(struct punto p1, struct punto p2)
-{
-	if (p1.x == p2.x) {
-		return 1;
-	}
-	return 0;
-}
