@@ -6,7 +6,7 @@ Memorizzare in un array bidimensionale 10 x 10 la tavola pitagorica, quella dell
 Memorizzare in un array bidimensionale 10 x 10 dei numeri casuali compresi tra zero e nove, stamparne il contenuto e dire quanti zeri sono memorizzati all’interno dell’array (per ripassare come generare numeri vai al link).
 
 ## Es 3
-Memorizzare in un array bidimensionale 5 per 5 tutti zeri tranne nelle celle della diagonale principale dove memorizzare uno (non usare l’inizializzazione con parentesi grafe nemmeno per gli zeri)
+Memorizzare in una matrice 5 x 5 tutti zeri tranne nelle celle della diagonale principale dove memorizzare uno (non usare l’inizializzazione con parentesi grafe nemmeno per gli zeri)
 ovvero:
 1 0 0 0 0
 0 1 0 0 0
