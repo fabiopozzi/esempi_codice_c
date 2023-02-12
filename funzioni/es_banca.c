@@ -17,11 +17,9 @@ Risolvere l'esercizio isolando le diverse richieste in funzioni dedicate che ven
 #include <stdio.h>
 #include <string.h>
 
-enum {
-	NUM = 4,
-	L_IBAN = 27,
-	L_COGN = 50
-};
+#define	NUM  4
+#define L_IBAN  27
+#define	L_COGN 50
 
 char numero_conto_corrente[NUM][L_IBAN] = {"12", "13", "25", "42"};
 char cognome_correntista[NUM][L_COGN] = {"Pozzi", "Bianchi", "Rossi", "Azzurri"};
@@ -37,20 +35,56 @@ void ordina_cognome();
 void ordina_saldo_decrescente();
 void ordina_saldo_crescente();
 
+void inserisci_persona(char cc[][L_IBAN], char cognomi[][L_COGN], float saldo[], int n)
+{
+	char cognome[L_COGN];
+	char conto_corrente[L_IBAN];
+	float s;
+	int pos;
+
+	for (int i = 0; i < n; i++) {
+		// cerco la posizione dove inserire
+		if (cognomi[i][0] == '\0'){
+			pos = i;
+			break;
+		}
+	}
+	if (pos == n) {
+		printf("non ci sono posizioni disponibili");
+		return;
+	} else {
+		printf("inserisci cognome");
+		scanf("%49s", cognome);
+
+		printf("inserisci conto");
+		scanf("%49s", conto_corrente);
+
+		printf("inserisci conto");
+		scanf("%f", &s);
+	}
+	// in base al valore di pos posso capire se non ci sono posizioni disponibili
+	// copio i valori letti nelle posizioni corrette
+	strcpy(cc[pos], conto_corrente);
+	strcpy(cognomi[pos], cognome);
+	saldo[pos] = s;
+}
+
 int main()
 {
-	/* stampa_per_conto("25"); */
-	/* stampa_per_cognome("Azzurri"); */
-	/* stampa_massimo_e_minimo(); */
-	/* stampa_rosso(); */
-	printf("ordina per cognome\n");
-	ordina_cognome();
-	printf("\nordina per saldo crescente\n");
-	ordina_saldo_crescente();
-	printf("\nordina per saldo decrescente\n");
-	ordina_saldo_decrescente();
+  inserisci_persona(numero_conto_corrente, cognome_correntista,
+                    saldo_conto_corrente, NUM);
+  /* stampa_per_conto("25"); */
+  /* stampa_per_cognome("Azzurri"); */
+  /* stampa_massimo_e_minimo(); */
+  /* stampa_rosso(); */
+  printf("ordina per cognome\n");
+  ordina_cognome();
+  printf("\nordina per saldo crescente\n");
+  ordina_saldo_crescente();
+  printf("\nordina per saldo decrescente\n");
+  ordina_saldo_decrescente();
 
-	return 0;
+  return 0;
 }
 
 void stampa_rosso()
@@ -107,9 +141,13 @@ void stampa_per_cognome(char cognome[])
 
 void stampa_persona(int pos)
 {
-  printf("Cognome:\t%s\nC. corrente\t%s\nSaldo:\t\t%f\n",
-		 cognome_correntista[pos], numero_conto_corrente[pos],
-		 saldo_conto_corrente[pos]);
+	if (pos > 0 && pos < NUM) {
+		printf("Cognome:\t%s\nC. corrente\t%s\nSaldo:\t\t%f\n",
+				cognome_correntista[pos], numero_conto_corrente[pos],
+				saldo_conto_corrente[pos]);
+	} else {
+		printf("INDICE NON VALIDO\n");
+	}
 }
 
 void stampa_media()
@@ -139,6 +177,14 @@ void swap_values(float *v1, float *v2)
 	*v2 = tmp;
 }
 
+void scambia_valori(float a[], int pos1, int pos2)
+{
+	float tmp;
+	tmp = a[pos1];
+	a[pos1] = a[pos2];
+	a[pos2] = tmp;
+}
+
 void stampa_valori()
 {
 	for(int i = 0; i < NUM; i++) {
@@ -154,6 +200,7 @@ void ordina_cognome()
 				swap_strings(cognome_correntista[j], cognome_correntista[j+1]);
 				swap_strings(numero_conto_corrente[j], numero_conto_corrente[j+1]);
 				swap_values(&saldo_conto_corrente[j], &saldo_conto_corrente[j+1]);
+				/* scambia_valori(saldo_conto_corrente, j, j+1); */
 			}
 		}
 	}
