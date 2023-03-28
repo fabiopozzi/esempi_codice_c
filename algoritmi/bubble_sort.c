@@ -8,7 +8,7 @@ int main()
     int array[N] = {1, 50, 44, 3, 24, 7, 15, 42, 11, 67};
     int scambi = 1;
 
-    for (i = 0 ; (i < N - 1) && scambi; i++)
+    for (i = 0 ; (i < N - 1) && (scambi != 0); i++)
     {
         scambi = 0;
         for (j = 0 ; j < N - i - 1; j++)
