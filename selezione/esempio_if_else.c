@@ -5,7 +5,9 @@ int main() {
     int n = 10;
     // se il numero e' positivo stampo "POSITIVO"
     if (n > 0) {
-        printf("POSITIVO");
+        printf("POSITIVO\n");
+    } else {
+        printf("NEGATIVO\n");
     }
     printf("ARRIVEDERCI!");
 
