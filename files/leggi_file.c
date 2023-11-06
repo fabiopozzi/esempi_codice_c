@@ -16,6 +16,7 @@ int main()
     if (fp != NULL) {
         fgets(stringa, N, fp);
         stringa[strcspn(stringa, "\n")] = '\0';
+        stringa[strlen(stringa)-1] = '\0'; // non sicura
         //fscanf(fp, "%s", stringa); // ci fermiamo al primo spazio
         //fscanf(fp, "%[^\n]", stringa); // leggiamo tutta la riga (buffer overflow)
 
