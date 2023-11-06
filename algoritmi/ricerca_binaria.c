@@ -16,7 +16,7 @@ int main()
 
 	primo = 0;
 	ultimo = N - 1;
-    trovato = 0;
+        trovato = 0;
 	pos = -1; // inizializzo con un valore non valido
 
 	printf("iterazione %d: ", i);
@@ -24,20 +24,22 @@ int main()
 	while (trovato == 0 && primo <= ultimo) {
 
 		medio = (primo + ultimo) / 2;
+                printf("posiz medio vale %d, il valore e' %d\n", medio, v[medio]);
 
 		if (v[medio] == chiave) {
-            trovato = 1;
-			pos = medio; // trovata
+                    trovato = 1;
+                    pos = medio; // trovata
+                    printf("HO TROVATO il valore!\n");
 		} else {
-			if (chiave > v[medio]) {
-				primo = medio + 1; // prosegui con parte destra
-			} else {
-				ultimo = medio - 1; // continua con parte sx
-			}
-		}
-        printf("iterazione %d: ", i);
-        printf("primo vale %d, ultimo vale %d\n", primo, ultimo);
-        i++;
+                    if (chiave > v[medio]) {
+                        primo = medio + 1; // prosegui con parte destra
+                    } else {
+                        ultimo = medio - 1; // continua con parte sx
+                    }
+                }
+                i++;
+                printf("iterazione %d: ", i);
+                printf("primo vale %d, ultimo vale %d\n", primo, ultimo);
 	}
 
 	if (trovato != 0) {
