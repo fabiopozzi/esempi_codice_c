@@ -75,3 +75,8 @@ int head(lista_t* p)
     // v2
     return (*p)->val;
 }
+
+int main()
+{
+    return 0;
+}

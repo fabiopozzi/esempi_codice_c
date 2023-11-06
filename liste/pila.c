@@ -21,6 +21,7 @@ bool is_empty(lista_t t)
 
 // 4- PUSH
 /*  push e' un semplice inserimento in testa */
+
 void push(lista_t* t, int v)
 {
     // 1- alloco elemento
@@ -35,6 +36,7 @@ void push(lista_t* t, int v)
     // 4- aggiorno la testa della lista
     *t = aux;
 }
+
 //5 - estrazione dalla testa della lista
 int pop(lista_t* t)
 {
@@ -56,7 +58,7 @@ int pop(lista_t* t)
 
 int main()
 {
-    list_item_t* testa = NULL;
+    lista_t testa = NULL;
     int tmp;
 
     push(&testa, 10);
