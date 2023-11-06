@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include "funzioni.h"
 
+int contatore;
+
 static int maggiore (int v1, int v2)
 {
     if (v1 > v2)

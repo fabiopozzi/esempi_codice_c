@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "funzioni.h"
 
+extern int contatore;
+
 int main()
 {
     int a = 10;
