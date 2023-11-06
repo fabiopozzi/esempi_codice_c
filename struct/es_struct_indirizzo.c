@@ -2,29 +2,40 @@
 #include <stdlib.h>
 
 struct automobile {
-    char targa[1600];
     char marca[16];
     char modello[16];
     int anno;
-    int *a;
-} ;
+};
 
-// ho un array di strutture dati automobile
+// SE HO UN PUNTATORE A STRUCT
+// per accedere ai membri della struttura dati devo usare ->
 void inserisci_auto(struct automobile *a)
 {
-    printf("inserisci targa: ");
-    scanf("%s", a->targa);
+    printf("inserisci marca: ");
+    scanf("%s", a->marca);
 
     printf("inserisci anno: ");
     scanf("%d", &a->anno);
 
 }
 
+void inserisci_array_auto(struct automobile b[], int dim)
+{
+    for(int i = 0; i < dim; i++) {
+        printf("inserisci marca: ");
+        scanf("%s", b[i].marca);
+
+        printf("inserisci anno: ");
+        scanf("%d", &b[i].anno);
+    }
+
+}
+
 struct automobile ins_auto()
 {
     struct automobile a;
-    printf("inserisci targa: ");
-    scanf("%s", a.targa);
+    printf("inserisci marca: ");
+    scanf("%s", a.marca);
 
     printf("inserisci anno: ");
     scanf("%d", &a.anno);
@@ -40,21 +51,23 @@ void inserisci_tante_auto(struct automobile tante_auto[])
     }
 }
 
-
-
-
-
-
 void stampa_auto(struct automobile am)
 {
-    printf("targa %s\n", am.targa);
+    printf("marca %s\n", am.marca);
     printf("anno %d\n", am.anno);
 }
 
 int main () {
-    struct automobile am;
+    struct automobile am[5];
+    struct automobile panda;
 
-    inserisci_auto(&am);
+    inserisci_auto(&panda);
+    for(int i = 0; i < 5; i++){
+        inserisci_auto(&am[i]);
+        am[i] = ins_auto();
+    }
+    inserisci_tante_auto(am);
+    inserisci_array_auto(am, 5);
 
-    stampa_auto(am);
+    stampa_auto(am[0]);
 }

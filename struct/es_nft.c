@@ -1,5 +1,21 @@
 #include <stdio.h>
 #include <string.h>
+/**
+  Vogliamo definire una struttura dati per memorizzare la nostra collezione di NFT e tenere traccia di quanti ne possediamo.
+Definire la struttura dati necessaria per la memorizzazione di:
+- nome
+- autore
+- URL
+- prezzo acquisto
+
+Vogliamo scrivere poi un programma che permetta di:
+- aggiungere un elemento alla nostra collezione senza avere doppioni
+
+- ricerca che ci dica se un elemento con un dato nome e' presente nella nostra collezione
+- visualizzare in formato tabellare la nostra collezione
+
+Isolare le funzionalità in appropriate funzioni.
+*/
 
 #define L_STR 50
 #define DIM_COLLEZIONE 10
@@ -61,7 +77,7 @@ int aggiungi_elemento(nft_t c[], int *num_elementi, int dim)
 	// perche' dopo l'inserimento voglio poter aggiornare il valore di num_elementi
 	// (incrementandolo di 1)
 	// non modifichero' num_elementi se la collezione e' gia' piena
-	char s[100];
+	char nome[100];
 	int pos = *num_elementi;
 
 	if (pos == dim) {
@@ -70,18 +86,18 @@ int aggiungi_elemento(nft_t c[], int *num_elementi, int dim)
 	}
 
 	printf("inserisci nome");
-	fgets(s, 50, stdin);
-	s[strlen(s)-1] = '\0';
+	fgets(nome, 50, stdin);
+	nome[strlen(nome)-1] = '\0';
 	nft_t valore_trovato;
 
-	int trovato = ricerca(c, pos, s, &valore_trovato);
+	int trovato = ricerca(c, pos, nome, &valore_trovato);
 	if(trovato) {
 		printf("il nome inserito è già presente nella collezione: ");
 		printf("%s %s %s %f\n", valore_trovato.nome, valore_trovato.autore, valore_trovato.URL, valore_trovato.prezzo);
 		return E_DUPLICATO;
 	}
 
-	funzione(&c[pos], s);
+	funzione(&c[pos], nome);
 
 	*num_elementi += 1;
 
@@ -92,17 +108,18 @@ int main()
 {
 	nft_t collezione[DIM_COLLEZIONE] = {0};
 	int n_collezione = 0;
+        int r;
 
 	while(1) {
-		int r = aggiungi_elemento(collezione, &n_collezione, DIM_COLLEZIONE);
-
-		if( r == 0 ) {
-			printf("ho aggiunto qualcosa\n");
-			printf("%s %s %s %f\n", collezione[0].nome, collezione[0].autore, collezione[0].URL, collezione[0].prezzo);
-			printf("numero elementi %d\n", n_collezione);
-		} else {
-			printf("ci sono stati problemi\n");
-		}
+            if(aggiungi_elemento(collezione, &n_collezione, DIM_COLLEZIONE)) {
+                // gestione errori
+                printf("ci sono stati problemi\n");
+                break;
+            }
+            // TUTTO BENE
+            printf("ho aggiunto qualcosa\n");
+            printf("%s %s %s %f\n", collezione[0].nome, collezione[0].autore, collezione[0].URL, collezione[0].prezzo);
+            printf("numero elementi %d\n", n_collezione);
 	}
 	return 0;
 }

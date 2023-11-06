@@ -15,16 +15,16 @@ struct data {
     unsigned int anno;
 };
 
-typedef struct {
+struct persona {
     //nome, cognome, provincia e anno di nascita
     char nome[L_STR];
     char cognome[L_STR];
     char prov[L_PROV];
     struct indirizzo i_residenza;
     struct data d_nascita;
-} persona;
+};
 
-void stampa_persona(persona p)
+void stampa_persona(struct persona p)
 {
     printf("--------------Persona-------------\n");
     printf("Nome: %s", p.nome);
@@ -36,9 +36,9 @@ void stampa_persona(persona p)
     printf("----------------------------------\n");
 }
 
-persona crea_persona()
+struct persona crea_persona()
 {
-    persona p;
+    struct persona p;
 
     printf("Nome:");
     fgets(p.nome, L_STR, stdin);
@@ -65,7 +65,7 @@ persona crea_persona()
 
 int main()
 {
-    persona p2;
+    struct persona p2;
 
     p2 = crea_persona();
     stampa_persona(p2);
