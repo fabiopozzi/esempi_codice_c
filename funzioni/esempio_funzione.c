@@ -1,22 +1,32 @@
 #include <stdio.h>
-int somma(int s1, int s2) // parametri FORMALI
-{
-	int s; // locale alla funzione somma
+#include <stdlib.h>
 
-	s = s1 + s2;
-	return s;
-}
+int somma(int s1, int s2); // PROTOTIPO della funzione
 
 int main()
 {
-	int i = 0, j;
+	int j;
 	j = 20;
 
 	j = somma(10, 20); // 10 e 20 sono PARAMETRI ATTUALI
-	if (somma(10, 20) > 40)
+	if (somma(100, 20) > 40) {
 		printf("AAAAAAAAAA");
+	}
 
-	int s1 = 40;
-	int s2 = -20;
-	j = somma(s1, s2); // s1 ed s2 sono parametri ATTUALI
+	int aaa = 40;
+	int bbb = -20;
+	j = somma(aaa, bbb); // s1 ed s2 sono parametri ATTUALI
+
+	return -1;
+}
+
+
+int somma(int s1, int s2) // parametri FORMALI
+{
+    s1 = 120;
+  if (s2 > 10) {
+    // uscire da tutto il programma
+    exit(1);
+  }
+  return s1 + s2;
 }

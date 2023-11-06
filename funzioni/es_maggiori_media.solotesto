@@ -1,0 +1,5 @@
+/*
+Realizzare una funzione che riceva in input un array di interi,
+la sua lunghezza e calcoli la media degli elementi.
+La funzione restituisce il NUMERO di valori dell'array maggiori della media
+*/
