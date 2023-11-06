@@ -23,7 +23,8 @@ int main()
     'A' === 65
     '\0' === 0
     */
-    nome[strcspn(nome, "\n")] = '\0';
+    int n =strcspn(nome, "\n");
+    nome[n] = '\0';
     // si veda https://man.openbsd.org/strcspn.3
     // perche' non va bene usare
     // nome[strlen(nome) - 1] = '\0';

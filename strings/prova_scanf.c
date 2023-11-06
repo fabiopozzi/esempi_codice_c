@@ -7,6 +7,9 @@ int main()
     char s[N];
 
     char format[4];
+    // %% permette di inserire un '%' nella stringa
+    // %d permette di inserire il valore numerico
+    // quindi "%%%ds" permette di generare "%4s" come risultato
     sprintf(format, "%%%ds", N - 1);
     scanf(format, s);
 

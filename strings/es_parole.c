@@ -1,7 +1,8 @@
 /*
 Si scriva un programma che chieda all'utente il numero di parole da leggere,
 legga ognuna delle parole (una per una),
-calcoli la lunghezza di ogni parola ed infine concateni le parole creando una frase,
+calcoli la lunghezza di ogni parola ed infine concateni le parole
+creando una frase,
 stampando infine la lunghezza totale della frase.
 */
 #include <stdio.h>
@@ -15,6 +16,7 @@ int main()
     char parola[50];
     int n;
     int l;
+    int l_tot = 0;
 
     printf("Inserisci il numero di parole: ");
     scanf("%d", &n);
@@ -25,10 +27,14 @@ int main()
         printf("scrivi la parola: ");
         scanf("%49s", parola);
         l = strlen(parola);
+        l_tot = l_tot + l;
         strcat(stringa, parola);
-        // strncat
+        // inserisco uno spazio dopo ogni parola
+        strcat(stringa, " ");
     }
-    printf("%s\n", stringa);
+    stringa[strlen(stringa) - 1] = '\0';
+    printf("---%s---\n", stringa);
+    printf("Lunghezza totale stringa %ld\n", strlen(stringa));
 
     return 0;
 }

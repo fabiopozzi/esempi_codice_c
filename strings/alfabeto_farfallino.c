@@ -19,6 +19,7 @@ int main()
 
     printf("inserisci stringa: ");
     scanf("%99s", stringa);
+    //fgets
 
     for(int i = 0; i < strlen(stringa); i++) {
        //if (stringa[i] == 'a' || stringa[i] == 'e'|| stringa[i] == 'i' || stringa[i] == 'o' || stringa[i] == 'u')
@@ -28,6 +29,13 @@ int main()
            risultato[j+1] = 'f';
            risultato[j+2] = stringa[i];
            j=j+3;
+	   //oppure
+           /* risultato[j] = stringa[i]; */
+	   /* j++; */
+           /* risultato[j] = 'f'; */
+	   /* j++; */
+           /* risultato[j] = stringa[i]; */
+	   /* j++; */
            //printf("%c%c%c", stringa[i], 'f', stringa[i]);
        } else {
            risultato[j] = stringa[i];
@@ -40,22 +48,3 @@ int main()
        //printf("\n");
     return 0;
 }
-/*
-if (stringa[i] == 'a') {
-    printf("afa");
-}
-if (stringa[i] == 'e') {
-    printf("efe");
-}
-
-if (stringa[i] == 'i') {
-    printf("ifi");
-}
-
-if (stringa[i] == 'o') {
-    printf("ofo");
-}
-if (stringa[i] == 'u') {
-    printf("ufu");
-}
-*/

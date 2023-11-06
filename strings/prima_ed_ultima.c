@@ -1,5 +1,6 @@
 /*
- * Scrivere un programma che, data una frase (max 100 caratteri), estragga in un array "risultato" la prima e l'ultima parola, separandole con una virgola. Infine il programma deve stampare a video il contenuto dell'array "risultato".
+ * Scrivere un programma che, data una frase (max 100 caratteri), estragga in un array "risultato" la prima e l'ultima parola,
+ separandole con una virgola. Infine il programma deve stampare a video il contenuto dell'array "risultato".
 
 Esempio:
 "Domani andrò a ballare in discoteca".
@@ -20,6 +21,7 @@ int main()
     fgets(frase, 100, stdin);
     frase[strcspn(frase, "\n")] = '\0';
 
+    // conta parole
     for(i = 0; frase[i] != '\0'; i++) {
         if (isalpha(frase[i])) {
             inizio_parola = 1;
@@ -33,11 +35,14 @@ int main()
     if (inizio_parola)
         parole++;
 
+
     char risultato[50] = {0};
     int conto = 0;
     int pos_inizio;
     int pos_fine;
     int j = 0, k;
+
+    // conto parole
     for(i = 0; frase[i] != '\0'; i++) {
         if (isalpha(frase[i])) {
             if (!inizio_parola)
@@ -50,6 +55,7 @@ int main()
                 inizio_parola = 0;
             }
         }
+	// prima ed ultima parola le copio, lettera per lettera in risultato
         if ((conto == 1) || (conto == parole)) {
             for(k = pos_inizio; k <= pos_fine; k++) {
                 risultato[j] = frase[k];
@@ -57,6 +63,7 @@ int main()
             }
         }
     }
+    // gestisco caso ultima parola non terminata da spazio
     if (inizio_parola){
         pos_fine = i;
         for(k = pos_inizio; k <= pos_fine; k++) {
