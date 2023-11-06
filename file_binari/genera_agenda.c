@@ -11,18 +11,19 @@ typedef struct {
 int main()
 {
 	FILE *fp;
-	agenda_t a;
+	agenda_t a[10];
 
 	fp = fopen("agenda.bin", "wb");
 
-	for(int i = 0; i < 10; i++) {
-		scanf("%19s", a.cognome);
-		scanf("%19s", a.nome);
-		scanf("%d", &a.giorno);
-		scanf("%d", &a.mese);
-		scanf("%d", &a.anno);
-		fwrite(&a, sizeof(a), 1, fp);
+	for(int i = 0; i < 2; i++) {
+		scanf("%19s", a[i].cognome);
+		scanf("%19s", a[i].nome);
+		scanf("%d", &a[i].giorno);
+		scanf("%d", &a[i].mese);
+		scanf("%d", &a[i].anno);
 	}
+	fwrite(a, sizeof(agenda_t), 2, fp);
+
 	fclose(fp);
 	return 0;
 

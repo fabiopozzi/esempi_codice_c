@@ -21,8 +21,8 @@ int main() {
 
     /* ciclo di lettura */
     while (1) {
-        res = fread(&p, sizeof(struct punto), 3, fd);
-        if (res != 3)
+        res = fread(&p, sizeof(struct punto), 1, fd);
+        if (res != 1)
             break;
 
         printf("coord. punto x:%d y:%d z:%d\n", p[0].x, p[0].y, p[0].z);
