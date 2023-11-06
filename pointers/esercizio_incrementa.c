@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 void incrementa(int *val) {
-    *val = *val + 1; // cosa contiene? Quanto vale?
+    *val = *val + 1;
 }
 
 int main() {
